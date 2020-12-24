@@ -1,32 +1,35 @@
-package MyAccount.HomeDepot;
+package MyAccount;
 
 import java.util.concurrent.TimeUnit;
 
+import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
+import MyAccount.HomeDepot.AccountTypePage;
+import MyAccount.HomeDepot.HomePage;
+import MyAccount.HomeDepot.SignUpPage;
 import Usability.selectBrowser;
 
 public class SignUp extends selectBrowser{
   
+	 @Parameters({"email", "pass", "zip", "phone"})
 	@Test
-  public void signup() throws InterruptedException 
+  public void signup(String email, String pass, String zip, String phone)
 	{
 		driver.manage().timeouts().implicitlyWait(3000, TimeUnit.MILLISECONDS);
 		HomePage hp = new HomePage(driver);
 		hp.clickMyAccount();
 		hp.clickRegister();
-		Thread.sleep(3000);
 		
 		AccountTypePage type = new AccountTypePage(driver);
 		type.clickAccountType();
 		type.clickSelect();
-		Thread.sleep(3000);
 
 		SignUpPage sign = new SignUpPage(driver);
-		sign.enterEmailAddress("example@gmail.com");
-		sign.enterPassword("Omar@234");
-		sign.enterZipCode("08401");
-		sign.enterPhoneNumber("6094456789");
+		sign.enterEmailAddress(email);
+		sign.enterPassword(pass);
+		sign.enterZipCode(zip);
+		sign.enterPhoneNumber(phone);
 		
 		/* Note: These two WebElements are giving trouble
 		 * so I have them commented out but everything else
@@ -34,7 +37,6 @@ public class SignUp extends selectBrowser{
 		 * sign.clickKeepSigned();
 		 * sign.clickVerifyMobile();
 		 */
-		Thread.sleep(3000);
 
 	}
 }
