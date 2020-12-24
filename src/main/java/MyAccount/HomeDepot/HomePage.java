@@ -15,11 +15,13 @@ public class HomePage
 	By myAccount = By.xpath("//div[contains(text(), 'My Account')]");
 	By register = By.xpath("//span[contains(text(), 'Register')]");
 	
+	// Click my Account
 	public void clickMyAccount()
 	{
 		driver.findElement(myAccount).click();
 	}
 	
+	//Click Register
 	public void clickRegister()
 	{
 		driver.findElement(register).click();
